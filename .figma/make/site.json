@@ -1,0 +1,12 @@
+{
+  "title": "ComeRICO",
+  "language": "es",
+  "description": "Conecta a clientes de Lima con negocios locales para comprar excedentes y Packs Sorpresa con descuento, mientras ayuda a los comercios a reducir desperdicios y gestionar pedidos.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

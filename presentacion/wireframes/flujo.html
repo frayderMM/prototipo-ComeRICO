@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>ComeRICO · Flujo de pantallas</title>
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; font-family: Inter, Arial, sans-serif; color: #111; }
+  #flow { position: relative; width: 1230px; padding: 26px 40px 30px; display: grid; gap: 64px; background: #fff; }
+  .row { display: grid; grid-template-columns: repeat(6, 150px); justify-content: space-between; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .col h3 { font: 800 14px Inter, Arial; white-space: nowrap; }
+  .scr { width: 150px; height: 292px; border: 2.5px solid #111; border-radius: 14px; background: #fff; padding: 10px 9px; display: flex; flex-direction: column; gap: 7px; position: relative; z-index: 1; }
+  .b { border: 1.5px solid #222; border-radius: 6px; display: grid; place-items: center; text-align: center; font: 500 10px/1.25 Inter, Arial; padding: 4px 5px; min-height: 22px; }
+  .g { background: #e6e6e6; }
+  .w { background: #fff; }
+  .y { background: #f6cf7a; font-weight: 700; min-height: 26px; margin-top: auto; }
+  .k { background: #111; color: #fff; border-color: #111; }
+  .dash { border-style: dashed; }
+  .grow { flex: 1; }
+  .t { text-align: center; font: 500 10px/1.3 Inter, Arial; }
+  .tb { text-align: center; font: 700 11px/1.3 Inter, Arial; }
+  .err { text-align: center; font: 600 10px Inter, Arial; color: #c0262d; }
+  .sm { font-size: 9px; color: #444; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .pair .b.on { background: #e6e6e6; font-weight: 700; }
+  .check { width: 34px; height: 34px; border: 2px solid #111; border-radius: 50%; display: grid; place-items: center; font: 800 16px Inter; margin: 4px auto 0; }
+  .nav { margin-top: auto; }
+  #arrows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; overflow: visible; }
+  .legend { position: absolute; right: 40px; bottom: 8px; display: flex; gap: 18px; font: 500 10px Inter; color: #444; align-items: center; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { display: inline-block; width: 22px; height: 0; border-top: 2px solid #111; }
+  .legend i.gray { border-color: #9a9a9a; }
+  .legend i.dashed { border-top-style: dashed; }
+  .legend b { display: inline-block; width: 18px; height: 11px; border: 1.5px solid #222; border-radius: 3px; background: #f6cf7a; }
+</style>
+</head>
+<body>
+<div id="flow">
+  <svg id="arrows"></svg>
+
+  <!-- ============ FILA 1: COMPRA ============ -->
+  <div class="row" id="row-compra">
+    <div class="col"><h3>0. Intro</h3><div class="scr" id="s0">
+      <div class="b g grow">logo + mascota<br />ComeRICO</div>
+      <div class="tb">Comida de hoy<br />a mitad de precio</div>
+      <div class="t">● ○ ○</div>
+      <div class="b y">Siguiente</div>
+      <div class="t sm">Saltar</div>
+    </div></div>
+
+    <div class="col"><h3>1. Inicio de sesión</h3><div class="scr" id="s1" data-noback="1">
+      <div class="b g" style="min-height:40px">logo ComeRICO</div>
+      <div style="height:8px"></div>
+      <div class="b w">Correo electrónico &nbsp;⇄</div>
+      <div class="b w">Contraseña</div>
+      <div class="err">mensaje de error</div>
+      <div class="b y">Iniciar sesión</div>
+      <div class="t sm">Crear cuenta · explorar sin cuenta</div>
+    </div></div>
+
+    <div class="col"><h3>2. Inicio</h3><div class="scr" id="s2">
+      <div class="b w">dirección · avisos</div>
+      <div class="b g">nivel + puntos</div>
+      <div class="b w">buscar local o comida · mapa</div>
+      <div class="b w">filtros: categoría · cerca</div>
+      <div class="b g grow">card del pack<br />-55% · S/ 12.90<br />recoge 8:00 – 9:30</div>
+      <div class="b g" style="min-height:30px">más packs cerca</div>
+      <div class="b w nav">barra de navegación</div>
+    </div></div>
+
+    <div class="col"><h3>3. Detalle del pack</h3><div class="scr" id="s3">
+      <div class="b g" style="min-height:62px">foto del pack</div>
+      <div class="tb">precio + ahorro</div>
+      <div class="pair"><div class="b w">stock</div><div class="b w">horario</div></div>
+      <div class="b w">qué puede traer</div>
+      <div class="b w">condiciones · alérgenos</div>
+      <div class="b w">−&nbsp; cantidad &nbsp;+</div>
+      <div class="b y">Continuar</div>
+    </div></div>
+
+    <div class="col"><h3>4. Pago</h3><div class="scr" id="s4">
+      <div class="b w">← Pago</div>
+      <div class="pair"><div class="b on">Recojo</div><div class="b w">Delivery</div></div>
+      <div class="b w">franjas de 30 min</div>
+      <div class="b w">Yape · Tarjeta · Efectivo</div>
+      <div class="b w">cupón</div>
+      <div class="b g grow">total + puntos<br />a ganar</div>
+      <div class="b y">Pagar</div>
+    </div></div>
+
+    <div class="col"><h3>5. Confirmación</h3><div class="scr" id="s5">
+      <div class="check">✓</div>
+      <div class="tb">¡Listo, Juan!</div>
+      <div class="b g grow">código + QR</div>
+      <div class="b w">franja de recojo</div>
+      <div class="b w">+65 pts al recoger</div>
+      <div class="b y">Ver detalle del pedido</div>
+    </div></div>
+  </div>
+
+  <!-- ============ FILA 2: FIDELIZACIÓN ============ -->
+  <div class="row" id="row-fidelizacion">
+    <div class="col"><h3>6. Seguimiento</h3><div class="scr" id="s6" data-noback="1">
+      <div class="b w">← Pedido RICO-…</div>
+      <div class="b g">Confirmado → Preparación<br />→ Listo → Recogido</div>
+      <div class="b g grow">código + QR</div>
+      <div class="b w">franja · dirección</div>
+      <div class="b k">aviso: ¡tu pack<br />está listo!</div>
+      <div class="b y">Calificar · +10 pts</div>
+    </div></div>
+
+    <div class="col"><h3>7. Reseña</h3><div class="scr" id="s7">
+      <div class="b g" style="min-height:52px">foto del local</div>
+      <div class="tb" style="letter-spacing:2px">★★★★★</div>
+      <div class="b w">etiquetas: porción · fresco</div>
+      <div class="b w grow">comentario</div>
+      <div class="b w dash">¿Suscribirte a<br />este local?</div>
+      <div class="b y">Publicar reseña</div>
+    </div></div>
+
+    <div class="col"><h3>8. Suscripción</h3><div class="scr" id="s8">
+      <div class="tb">local elegido</div>
+      <div class="b w">días: L M X J V S D</div>
+      <div class="b w">franja de 30 min</div>
+      <div class="pair"><div class="b on">Recojo</div><div class="b w">Delivery</div></div>
+      <div class="b w">duración: 4 sem · 3 · 6 meses</div>
+      <div class="b g grow">costo por entrega<br />(se cobra al confirmar)</div>
+      <div class="b y">Revisar y confirmar</div>
+    </div></div>
+
+    <div class="col"><h3>9. Mi semana</h3><div class="scr" id="s9">
+      <div class="b w">semana: L M X J V S D</div>
+      <div class="b g" style="min-height:48px">entrega del día<br />Programada · Saltar</div>
+      <div class="b w" style="min-height:40px">mis suscripciones<br />Activa</div>
+      <div class="b w">+ otro local</div>
+      <div class="grow"></div>
+      <div class="b g">≈ S/ por semana</div>
+      <div class="b w nav">barra de navegación</div>
+    </div></div>
+
+    <div class="col"><h3>10. Beneficios</h3><div class="scr" id="s10">
+      <div class="b g" style="min-height:46px">nivel + puntos<br />+ barra de progreso</div>
+      <div class="pair"><div class="b on">Nivel</div><div class="b w">Cupones</div></div>
+      <div class="b w">Bronce ✓</div>
+      <div class="b w">Plata ✓</div>
+      <div class="b w" style="border-width:2.5px;font-weight:700">Oro · tu nivel</div>
+      <div class="b w">cómo ganar puntos</div>
+      <div class="b y">Ir a la ruleta</div>
+    </div></div>
+
+    <div class="col"><h3>11. Panel del local</h3><div class="scr" id="s11" data-noback="1" data-dashed="1">
+      <div class="b g" style="min-height:38px">ventas de hoy</div>
+      <div class="b w">suscripciones de hoy<br />Juan P.</div>
+      <div class="b y" style="margin-top:0">Confirmar pack</div>
+      <div class="b w grow">pedidos: preparar<br />→ listo → entregado</div>
+      <div class="b w">validar código</div>
+      <div class="b w nav">barra del negocio</div>
+    </div></div>
+  </div>
+
+  <div class="legend">
+    <span><i></i>avanzar</span>
+    <span><i class="gray"></i>volver</span>
+    <span><i class="dashed"></i>cambio al local</span>
+    <span><b></b>acción principal</span>
+  </div>
+</div>
+
+<script>
+  // Dibuja las flechas a partir de la posición real de cada pantalla.
+  function draw() {
+  const flow = document.getElementById("flow");
+  const svg = document.getElementById("arrows");
+  const NS = "http://www.w3.org/2000/svg";
+  const fr = flow.getBoundingClientRect();
+  const box = (id) => {
+    const r = document.getElementById(id).getBoundingClientRect();
+    return { l: r.left - fr.left, r: r.right - fr.left, t: r.top - fr.top, b: r.bottom - fr.top, h: r.height, cx: (r.left + r.right) / 2 - fr.left };
+  };
+  svg.innerHTML = `<defs>
+    <marker id="hk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#111"/></marker>
+    <marker id="hg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9a9a9a"/></marker>
+  </defs>`;
+  const line = (d, color, marker, dashed) => {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", d);
+    p.setAttribute("fill", "none");
+    p.setAttribute("stroke", color);
+    p.setAttribute("stroke-width", color === "#111" ? "2.2" : "1.6");
+    if (dashed) p.setAttribute("stroke-dasharray", "6 4");
+    p.setAttribute("marker-end", `url(#${marker})`);
+    svg.appendChild(p);
+  };
+  const rows = [["s0", "s1", "s2", "s3", "s4", "s5"], ["s6", "s7", "s8", "s9", "s10", "s11"]];
+  rows.forEach((ids) => {
+    for (let i = 0; i < ids.length - 1; i++) {
+      const a = box(ids[i]);
+      const bEl = document.getElementById(ids[i + 1]);
+      const b = box(ids[i + 1]);
+      const dashed = bEl.dataset.dashed === "1";
+      const yF = a.t + a.h * 0.45;
+      line(`M${a.r + 5} ${yF} L${b.l - 6} ${yF}`, "#111", "hk", dashed);
+      if (bEl.dataset.noback !== "1") {
+        const yB = a.t + a.h * 0.72;
+        line(`M${b.l - 6} ${yB} L${a.r + 7} ${yB}`, "#9a9a9a", "hg");
+      }
+    }
+  });
+  // Conector de la fila 1 (Confirmación) a la fila 2 (Seguimiento)
+  const a = box("s5");
+  const b = box("s6");
+  const yGap = a.b + 30;
+  const xLeft = 18;
+  const yIn = b.t + b.h * 0.45;
+  line(`M${a.cx} ${a.b + 4} L${a.cx} ${yGap} L${xLeft} ${yGap} L${xLeft} ${yIn} L${b.l - 6} ${yIn}`, "#111", "hk");
+  window.__done = true;
+  }
+  document.fonts.ready.then(draw);
+</script>
+</body>
+</html>
